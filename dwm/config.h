@@ -1,6 +1,6 @@
 /* See LICENSE file for copyright and license details. */
 
-#include "/home/agentk/.suckless/dwm/themes/red.h" /* Importing Theme */
+#include "/home/agentk/.suckless/dwm/themes/darkblue.h" /* Importing Theme */
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
