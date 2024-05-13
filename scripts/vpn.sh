@@ -8,7 +8,7 @@ if [ -n "$vpn_status" ]; then
   vpn_info=""
   if echo "$vpn_status" | grep -q 'vpn'; then
     # OpenVPN is active
-    vpn_info=$(echo "${vpn_info}OV/")
+    vpn_info=$(echo "${vpn_info}OV")
   fi
   if echo "$vpn_status" | grep -q 'wireguard'; then
     # WireGuard is active
