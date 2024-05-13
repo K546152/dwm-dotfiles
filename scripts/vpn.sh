@@ -8,11 +8,11 @@ if [ -n "$vpn_status" ]; then
   vpn_info=""
   if echo "$vpn_status" | grep -q 'vpn'; then
     # OpenVPN is active
-    vpn_info+="OV/"
+    vpn_info=$(echo "${vpn_info}OV/")
   fi
   if echo "$vpn_status" | grep -q 'wireguard'; then
     # WireGuard is active
-    vpn_info+="WG"
+    vpn_info=$(echo "${vpn_info}WG")
   fi
   echo "VPN:$vpn_info"  # You can customize this symbol to match your dwmblocks icons
 else
