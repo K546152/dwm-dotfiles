@@ -1,13 +1,22 @@
 #!/bin/sh
 
-# Check if VPN is active (you might need to adjust the VPN interface name)
-vpn_status=$(nmcli -t -f NAME,TYPE,STATE c show --active | grep vpn | cut -d':' -f2)
+# Check if any VPN is active
+vpn_status=$(nmcli -t -f NAME,TYPE,STATE c show --active | grep -E 'vpn|wireguard' | cut -d':' -f2)
 
 if [ -n "$vpn_status" ]; then
   # VPN is active
-  echo "VPN:On"  # You can customize this symbol to match your dwmblocks icons
+  vpn_info=""
+  if echo "$vpn_status" | grep -q 'vpn'; then
+    # OpenVPN is active
+    vpn_info+="OV "
+  fi
+  if echo "$vpn_status" | grep -q 'wireguard'; then
+    # WireGuard is active
+    vpn_info+="WG"
+  fi
+  echo "VPN:$vpn_info"  # You can customize this symbol to match your dwmblocks icons
 else
-  # VPN is inactive
-  echo "VPN:Off"  # You can customize this symbol to match your dwmblocks icons
+  # No VPN is active
+  echo "VPN:/"  # You can customize this symbol to match your dwmblocks icons
 fi
 
